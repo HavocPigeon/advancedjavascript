@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
 // class MyError extends Error {
-//   toString() {
-//     return "A SUPER bad error occurred: " + this.message
+//   constructor(message) {
+//     super();
+//     this.message = message;
 //   }
+//   // toString() {
+//   //   return "A SUPER bad error occurred: " + this.message
+//   // }
+// }
+
+// MyError.prototype.toString = function() {
+//   return "A SUPER bad error occurred: " + this.message
 // }
 
 class App extends Component {
   state = {
-    jsonString: `{"name": "easton"}`,
+    jsonString: `{"name": "tyler"}`,
     fieldToGrab: 'name',
     message: '',
   }
@@ -21,13 +30,13 @@ class App extends Component {
   getFieldValueFromJSON = () => {
     try {
       const jsonObject = JSON.parse(this.state.jsonString)
-      // this.doNaughtyThing()
       this.setState({ message: "The value is: " + jsonObject[this.state.fieldToGrab] })
+      // this.doNaughtyThing()
     } catch (err) {
       console.log('-------------- err', err);
       this.setState({ message: "Error" + err })
     } finally {
-        console.log('finally')
+      console.log('finally')
     }
   }
   
